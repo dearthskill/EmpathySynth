@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Empathy Synth - Neurodivergent Support App</title>
+    <meta name="description" content="A supportive audio generation app designed for neurodivergent individuals">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bulma CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" rel="stylesheet">
+
+    <!-- Custom local CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+
+  <body>
+    <!-- Skip to main content for screen readers -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Accessibility controls -->
+    <div class="accessibility-controls" role="region" aria-label="Accessibility Options">
+      <button id="toggle-high-contrast" class="accessibility-btn" aria-label="Toggle high contrast mode" title="Toggle high contrast mode">
+        <span aria-hidden="true">🎨</span> High Contrast
+      </button>
+      <button id="toggle-reduced-motion" class="accessibility-btn" aria-label="Toggle reduced motion" title="Toggle reduced motion">
+        <span aria-hidden="true">♿</span> Reduce Motion
+      </button>
+      <button id="toggle-large-text" class="accessibility-btn" aria-label="Toggle large text" title="Toggle large text">
+        <span aria-hidden="true">🔍</span> Large Text
+      </button>
+    </div>
+
+    <section class="hero is-light is-fullheight" id="main-content">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-10-desktop is-12-tablet">
+
+              <div class="app-box" role="main">
+                <header class="app-header">
+                  <h1 class="title is-2" id="main-title">Empathy Synth</h1>
+                  <p class="subtitle is-5" id="main-subtitle">
+                    A calming audio companion designed with neurodivergent needs in mind
+                  </p>
+                </header>
+
+                <div class="columns is-variable is-5">
+                  <div class="column is-two-thirds">
+                    <div class="content main-content">
+                      <div class="action-section">
+                        <h2 class="is-size-5 has-text-weight-semibold mb-4">Generate Audio</h2>
+                        
+                        <div class="buttons button-group" role="group" aria-label="Audio generation controls">
+                          <button 
+                            id="run" 
+                            class="button is-primary is-large action-button" 
+                            aria-label="Generate new audio based on current emotion"
+                            type="button">
+                            <span class="button-icon" aria-hidden="true">✨</span>
+                            <span class="button-text">Generate Audio</span>
+                            <span class="loading-spinner" aria-hidden="true"></span>
+                          </button>
+                          <button 
+                            id="play-audio" 
+                            class="button is-info is-large action-button" 
+                            disabled
+                            aria-label="Play the last generated audio"
+                            type="button">
+                            <span class="button-icon" aria-hidden="true">▶️</span>
+                            <span class="button-text">Play Audio</span>
+                          </button>
+                        </div>
+
+                        <div class="status-box" id="card-output" role="status" aria-live="polite" aria-atomic="true">
+                          <div class="status-indicator">
+                            <span class="status-icon" aria-hidden="true">💤</span>
+                            <p id="status" class="status-text">Ready to generate audio</p>
+                          </div>
+                          <div class="output-container">
+                            <pre id="out" class="output-text" aria-label="Generated data output">No data yet</pre>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Side Info Panel -->
+                  <div class="column">
+                    <aside class="info-panel" role="complementary" aria-label="Session Information">
+                      <div class="panel">
+                        <p class="panel-heading">Session Information</p>
+
+                        <div class="panel-block info-item">
+                          <div class="info-label">Last Emotion:</div>
+                          <div class="info-value" id="last-emotion" aria-live="polite">—</div>
+                        </div>
+
+                        <div class="panel-block info-item">
+                          <div class="info-label">Audio Prompt:</div>
+                          <div class="info-value" id="last-prompt" aria-live="polite">—</div>
+                        </div>
+
+                        <div class="panel-block info-item">
+                          <div class="info-label">Seed:</div>
+                          <div class="info-value" id="last-seed" aria-live="polite">—</div>
+                        </div>
+                      </div>
+                    </aside>
+                  </div>
+                </div>
+
+                <div class="audio-player-container" id="audio-container" style="display:none" role="region" aria-label="Audio Player">
+                  <audio 
+                    id="player" 
+                    controls 
+                    aria-label="Generated audio playback"
+                    style="width:100%; margin-top:10px">
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+
+                <footer class="app-footer">
+                  <p class="is-size-7 help-text">
+                    This application runs fully locally. Audio is generated based on emotional analysis and decoded from base64 format.
+                  </p>
+                  <p class="is-size-7 help-text">
+                    Use the accessibility controls at the top to customize your experience.
+                  </p>
+                </footer>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
